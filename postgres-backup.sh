@@ -10,6 +10,11 @@ FILEPATH="${DESTINATION_DIRECTORY}/${FILESYSTEM_TIMESTAP}.dump"
 # Validation
 [[ -d "$DESTINATION_DIRECTORY" ]]
 
+# Functions
+function logTs() {
+  echo "$(date +"%Y-%m-%d %H:%M:%S.%3N %Z")"
+}
+
 # Execute
 PGPASSWORD="$POSTGRES_PASSWORD" pg_dump \
   --host "$POSTGRES_HOST" \
@@ -20,8 +25,7 @@ PGPASSWORD="$POSTGRES_PASSWORD" pg_dump \
 
 # Output
 destination_size="$(du -sb "$DESTINATION_DIRECTORY" | awk '{printf "%.2fgb\n", $1/1024/1024/1024}')"
-log_timestamp="$(date +"%Y-%m-%d %H:%M:%S.%3N %Z")"
-echo "[${log_timestamp}] [INFO] ${DESTINATION_DIRECTORY} -- ${destination_size}"
+echo "[$(logTs)] [INFO] ${DESTINATION_DIRECTORY} -- ${destination_size}"
 
 # Retention policy
 find "$DESTINATION_DIRECTORY" -name '*.dump' -mtime +14 -delete
