@@ -4,8 +4,8 @@ set -euo pipefail
 
 # Vars
 DESTINATION_DIRECTORY="/destination"
-FILESYSTEM_TIMESTAP="$(date +"%Y-%m-%d_%H-%M-%S.%3N_%Z")"
-FILEPATH="${DESTINATION_DIRECTORY}/${FILESYSTEM_TIMESTAP}.dump"
+FILESYSTEM_TIMESTAMP="$(date +"%Y-%m-%d_%H-%M-%S.%3N_%Z")"
+FILEPATH="${DESTINATION_DIRECTORY}/${FILESYSTEM_TIMESTAMP}.dump"
 
 # Validation
 [[ -d "$DESTINATION_DIRECTORY" ]]
