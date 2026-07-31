@@ -4,8 +4,8 @@ set -euo pipefail
 
 # Vars
 DESTINATION_DIRECTORY="/destination"
-TIMESTAMP="$(date +"%Y-%m-%d_%H-%M-%S.%3N_%Z")"
-FILEPATH="${DESTINATION_DIRECTORY}/postgres-${TIMESTAMP}.dump"
+FILESYSTEM_TIMESTAP="$(date +"%Y-%m-%d_%H-%M-%S.%3N_%Z")"
+FILEPATH="${DESTINATION_DIRECTORY}/${FILESYSTEM_TIMESTAP}.dump"
 
 # Validation
 [[ -d "$DESTINATION_DIRECTORY" ]]
